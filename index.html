@@ -23,7 +23,6 @@
         </div>
     </section>
 
-
     <section id="vista-categorias" style="display: none;">
         <header class="navbar">
             <div class="nav-logo" onclick="volverPortada()">
@@ -60,75 +59,70 @@
                     <img src="img/cat-bebidas.webp" alt="Categoría Bebidas">
                 </article>
             </div>
-
             <div style="height: 100px;" aria-hidden="true"></div> 
         </main>
-            <a href="https://wa.me/5491139520659" class="boton-flotante-wsp" target="_blank">
-        <img src="img/icono-whatsapp.png" alt="WhatsApp">
-        </a>
     </section>
-
 
     <section id="vista-productos" style="display: none;">
         <header class="navbar">
-    <div class="nav-links">
-        <button class="btn-back" onclick="volverCategorias()" aria-label="Volver atrás">
-            <img src="img/flecha-volver.png" alt="" class="icono-flecha">
-        </button>
-    
-    </div>
-    
-    <div class="nav-logo" onclick="volverPortada()">
-        <img src="img/logo-blanco.png" alt="Logo Pompeya Pub Social" class="logo-img">
-    </div>
-    </header>
+            <div class="nav-links">
+                <button class="btn-back" onclick="volverCategorias()" aria-label="Volver atrás">
+                    <img src="img/flecha-volver.png" alt="" class="icono-flecha">
+                </button>
+            </div>
+            <div class="nav-logo" onclick="volverPortada()">
+                <img src="img/logo-blanco.png" alt="Logo Pompeya Pub Social" class="logo-img">
+            </div>
+        </header>
     
         <main class="container">
-    <section id="seccion-tapeos" class="grupo-productos">
-        <h2 class="titulo-seccion">tapeos</h2>
-        <div id="contenedor-tapeos"></div> </section>
+            <section id="seccion-tapeos" class="grupo-productos">
+                <h2 class="titulo-seccion">tapeos</h2>
+                <div id="contenedor-tapeos"></div> 
+            </section>
 
-    <section id="seccion-burgers" class="grupo-productos">
-        <h2 class="titulo-seccion">burgers</h2>
-        <div id="contenedor-burgers"></div>
+            <section id="seccion-burgers" class="grupo-productos">
+                <h2 class="titulo-seccion">burgers</h2>
+                <div id="contenedor-burgers"></div>
+            </section>
+            
+            <section id="seccion-veggie" class="grupo-productos">
+                <h2 class="titulo-seccion">veggie burgers</h2>
+                <div id="contenedor-veggie"></div>
+            </section>
+
+            <section id="seccion-pizzas" class="grupo-productos">
+                <h2 class="titulo-seccion">pizzas</h2>
+                <div id="contenedor-pizzas"></div>
+            </section>
+
+            <section id="seccion-ensaladas" class="grupo-productos">
+                <h2 class="titulo-seccion">ensaladas</h2>
+                <div id="contenedor-ensaladas"></div>
+            </section>    
+
+            <section id="seccion-sandwiches" class="grupo-productos">
+                <h2 class="titulo-seccion">sandwiches y wraps</h2>
+                <div id="contenedor-sandwiches"></div>
+            </section>
+
+            <section id="seccion-postres" class="grupo-productos">
+                <h2 class="titulo-seccion">postres</h2>
+                <div id="contenedor-postres"></div>
+            </section>
+
+            <section id="seccion-bebidas" class="grupo-productos">
+                <h2 class="titulo-seccion">bebidas</h2>
+                <div id="contenedor-bebidas"></div>
+            </section>
+
+            <div style="height: 120px;" aria-hidden="true"></div> 
+        </main>
     </section>
-    
-    <section id="seccion-veggie" class="grupo-productos">
-        <h2 class="titulo-seccion">veggie burgers</h2>
-        <div id="contenedor-veggie"></div>
-    </section>
 
-    <section id="seccion-pizzas" class="grupo-productos">
-        <h2 class="titulo-seccion">pizzas</h2>
-        <div id="contenedor-pizzas"></div>
-    </section>
-
-    <section id="seccion-ensaladas" class="grupo-productos">
-        <h2 class="titulo-seccion">ensaladas</h2>
-        <div id="contenedor-ensaladas"></div>
-    </section>    
-
-        <section id="seccion-sandwiches" class="grupo-productos">
-        <h2 class="titulo-seccion">sandwiches y wraps</h2>
-        <div id="contenedor-sandwiches"></div>
-    </section>
-
-        <section id="seccion-postres" class="grupo-productos">
-        <h2 class="titulo-seccion">postres</h2>
-        <div id="contenedor-postres"></div>
-    </section>
-
-        <section id="seccion-bebidas" class="grupo-productos">
-        <h2 class="titulo-seccion">bebidas</h2>
-        <div id="contenedor-bebidas"></div>
-    </section>
-
-    <div style="height: 120px;" aria-hidden="true"></div> 
-            <a href="https://wa.me/5491139520659" class="boton-flotante-wsp" target="_blank">
+    <a href="https://wa.me/5491139520659" class="boton-flotante-wsp" target="_blank">
         <img src="img/icono-whatsapp.png" alt="WhatsApp">
-        </a>
-</main>
-
+    </a>
 
     <button id="btn-pedido" onclick="abrirCarrito()" aria-label="Abrir carrito de compras">
         VER PEDIDO (<span id="cantidad-carrito">0</span>) - $<span id="total-carrito">0</span>
@@ -193,11 +187,9 @@
         </div>
     </aside>
 
-    <div id="overlay" onclick="cerrarTodo()" aria-hidden="true"></div>
+    <div id="overlay" onclick="cerrarModal(); cerrarModalDatos(); cerrarCarrito();" aria-hidden="true"></div>
     
     <script src="js/script.js"></script>
 
 </body>
-
 </html>
-
