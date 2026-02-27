@@ -1,0 +1,711 @@
+/* ==========================================================================
+   1. CARGA DE FUENTES
+   ========================================================================== */
+@font-face {
+    font-family: 'Maderon';
+    src: url('../fonts/Maderon.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ArtSchoolDoprout';
+    src: url('../fonts/ARTSCHOOLDROPOUT-Skinny.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ==========================================================================
+   2. VARIABLES GLOBALES
+   ========================================================================== */
+:root {
+    --rojo: #E31B23;
+    --negro: #121212;
+    --rosa: #F2A7C5;
+    --blanco: #ffffff;
+    --font-subtitulos: 'ArtSchoolDoprout', sans-serif;
+    --font-titulos: 'Maderon', sans-serif;
+    --font-textos: 'Albert Sans', sans-serif; 
+}
+
+/* ==========================================================================
+   3. ESTILOS BASE
+   ========================================================================== */
+body {
+    background-color: var(--negro);
+    color: var(--blanco);
+    font-family: var(--font-textos);
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   4. VISTA 1: PORTADA RESPONSIVE
+   ========================================================================== */
+#vista-portada {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--negro);
+}
+
+.portada-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.fondo-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center center; 
+    z-index: 1; 
+}
+
+.boton-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 2; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-rojo-portada {
+    background-color: var(--rojo);
+    color: var(--blanco);
+    font-family: var(--font-textos); 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
+}
+
+.btn-rojo-portada:active, 
+.btn-rojo-portada:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+    background-color: var(--rosa);
+    color: var(--negro);
+}
+
+/* ==========================================================================
+   5. NAVEGACIÓN (NAVBAR)
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--rojo);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.nav-logo {
+    cursor: pointer;
+    display: flex;
+    padding-top: 2px;
+}
+
+.logo-img {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+.nav-links button, /* Adaptado para el <button> que pusimos en HTML */
+.nav-links a {
+    background: none;
+    border: none;
+    color: var(--blanco);
+    text-decoration: none;
+    font-family: var(--font-textos);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    display: inline-block;
+    padding-top: 6px;
+    cursor: pointer;
+}
+
+.nav-links button:hover,
+.nav-links a:hover {
+    color: var(--negro);
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    padding: 10px; /* ÁREA TÁCTIL CLAVE: Hace que el botón sea más "gordo" e invisible de tocar en celulares */
+    margin-left: -10px; /* Compensa el padding para que la flecha siga pegada al borde izquierdo */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.btn-back:hover {
+    transform: translateX(-4px); /* El efecto de moverse hacia atrás al pasar el mouse */
+}
+
+.icono-flecha {
+    width: 30px; /* Al estar sola, capaz la querés un poquitito más grande. Ajustá este número a gusto */
+    height: auto;
+    object-fit: contain;
+    /* filter: invert(100%); Descomentá esto si la imagen es negra y la querés blanca */
+}
+
+
+/* ==========================================================================
+   6. CONTENEDORES PRINCIPALES
+   ========================================================================== */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 80px; 
+}
+
+/* ==========================================================================
+   7. VISTA 2: GRILLA DE CATEGORÍAS 
+   ========================================================================== */
+.grilla-fotos-categorias {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.card-categoria {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1; 
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+}
+
+.card-categoria:active {
+    transform: scale(0.95);
+}
+
+.card-categoria img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-cat-titulo {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    color: var(--blanco);
+    font-family: var(--font-titulos);
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 30px 0 10px 0;
+    letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   8. VISTA 3: LISTADO DE PRODUCTOS
+   ========================================================================== */
+
+   .titulo-pedido {
+    font-family: var(--font-subtitulos);
+    color: var(--blanco);
+    font-size: 2rem;
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-bottom: none;
+    letter-spacing: 1.5px;
+    font-weight: normal;
+}
+
+.titulo-seccion {
+    font-family: var(--font-titulos);
+    font-size: 5rem;
+    font-weight: normal;
+}
+
+.lista-productos {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    background-color: var(--negro);
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 25px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.menu-item-titulo {
+    font-size: 1.1rem;
+    color: var(--blanco);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.menu-item-descripcion {
+    font-size: 0.85rem;
+    color: #d18d9b;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.menu-item-precio {
+    font-size: 1.1rem;
+    color: var(--blanco);
+    font-weight: 900;
+    margin-top: 5px;
+}
+
+.tag-nuevo {
+    background-color: var(--rojo);
+    color: var(--blanco);
+    font-size: 0.6rem;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.menu-item-img-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    flex-shrink: 0;
+}
+
+.menu-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.btn-agregar-plus {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--rojo);
+    color: var(--blanco);
+    border: none;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    transition: transform 0.1s ease;
+}
+
+.btn-agregar-plus:active {
+    transform: scale(0.9);
+    background-color: #c2151d;
+}
+
+/* ==========================================================================
+   9. BOTÓN FLOTANTE DEL CARRITO
+   ========================================================================== */
+#btn-pedido {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--rosa);
+    color: var(--blanco);
+    width: 90%;
+    max-width: 200px;
+    padding: 15px 30px;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    font-family: var(--font-textos);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: none; 
+    z-index: 1000;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.2s;
+}
+
+#btn-pedido:hover {
+    background-color: var(--rojo);
+    transform: translateX(-50%) scale(1.05) translateY(-2px);
+}
+
+@keyframes latidoSutil {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.03); }
+    100% { transform: translateX(-50%) scale(1); }
+}
+
+.animar-btn {
+    animation: latidoSutil 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   10. MODALES (ACLARACIONES Y DATOS)
+   ========================================================================== */
+.modal-oculto {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;  /* Cambiamos % por vw para asegurar el ancho exacto de la pantalla */
+    height: 100vh; /* Cambiamos % por vh para el alto exacto */
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    margin: 0 !important;  /* Forzamos a que no haya márgenes ocultos */
+    padding: 0 !important; /* Forzamos a que no haya rellenos ocultos */
+    box-sizing: border-box;
+}
+
+.modal-contenido {
+    background-color: var(--negro);
+    padding: 30px;
+    width: 85%;
+    max-width: 400px;
+    text-align: left;
+    border-radius: 8px;
+    box-shadow: 10px 10px 0px 0px var(--rojo);
+    box-sizing: border-box;
+
+    /* EL MÉTODO INFALIBLE PARA CENTRAR */
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important; /* Esto lo ancla exacto en el medio */
+    margin: 0 !important;
+}
+
+.modal-contenido h3 {
+    font-family: var(--font-subtitulos);
+    color: var(--rosa);
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#modal-producto-nombre {
+    color: var(--blanco);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+#modal-input-aclaracion {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #222;
+    color: var(--blanco);
+    font-family: var(--font-textos);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.modal-botones {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.modal-botones button {
+    flex: 1;
+    padding: 12px 0;
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font-textos);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-cancelar {
+    background-color: #444;
+    color: var(--blanco);
+}
+
+.btn-confirmar {
+    background-color: var(--rojo);
+    color: var(--blanco);
+}
+
+/* Estilos específicos para Formulario de Envío */
+#form-datos-envio input, 
+#form-datos-envio select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #222;
+    border: 1px solid #444;
+    color: var(--blanco);
+    border-radius: 4px;
+    font-family: var(--font-textos);
+    box-sizing: border-box; /* Previene desbordes */
+}
+
+.gracias-seccion {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.gracias-seccion p {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin: 5px 0;
+    color: var(--rosa);
+}
+
+.total-final {
+    color: var(--rojo);
+    font-size: 1.4rem !important;
+}
+
+/* ==========================================================================
+   11. CARRITO LATERAL (OFFCANVAS)
+   ========================================================================== */
+.carrito-offcanvas {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 320px;
+    height: 100%;
+    background-color: var(--negro);
+    z-index: 2000;
+    transition: left 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+}
+
+.carrito-offcanvas.abierto {
+    left: 0;
+}
+
+.carrito-header { 
+    padding: 20px; 
+    border-bottom: 1px solid #333; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.carrito-header h3 {
+    margin: 0;
+    font-family: var(--font-subtitulos);
+    font-weight: normal;
+}
+
+.btn-cerrar {
+    background: none;
+    border: none;
+    color: var(--blanco);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.carrito-cuerpo { 
+    flex-grow: 1; 
+    padding: 20px; 
+    overflow-y: auto; 
+    color: var(--blanco); 
+}
+
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 10px;
+}
+
+.item-carrito-info {
+    flex-grow: 1;
+}
+
+.item-carrito-controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.btn-control {
+    background-color: #222;
+    border: 1px solid var(--rojo);
+    color: var(--blanco);
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.btn-control:hover {
+    background-color: var(--rojo);
+}
+
+.btn-eliminar {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: color 0.2s;
+}
+
+.btn-eliminar:hover {
+    color: var(--rojo);
+}
+
+.carrito-footer { 
+    padding: 20px; 
+    border-top: 1px solid #333; 
+}
+
+.total-contenedor {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.btn-enviar-wa {
+    width: 100%;
+    background-color: var(--rojo);
+    color: var(--blanco);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: var(--font-textos);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-enviar-wa:hover {
+    background-color: #c2151d;
+}
+
+/* Capa superpuesta para modales y carrito lateral */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1999;
+
+}
+
+.boton-flotante-wsp {
+    position: fixed;
+    bottom: 20px;      /* Distancia desde abajo */
+    right: 20px;       /* Distancia desde la derecha */
+    width: 60px;
+    height: 60px;
+    background-color: #25D366; /* El verde oficial de WhatsApp */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;     /* Para que quede por encima de todo el menú */
+    transition: transform 0.2s ease; /* Animación suave */
+}
+
+/* Para que la imagen quede centrada y del tamaño correcto */
+.boton-flotante-wsp img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+/* Efectito de que se agranda cuando pasas el dedo/mouse */
+.boton-flotante-wsp:hover {
+    transform: scale(1.1);
+}
+
+.menu-item-titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.contenedor-iconos {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.icono-tipo-dieta {
+    height: 18px; /* Tamaño de la hojita */
+    width: auto;
+}
+
