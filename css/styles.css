@@ -709,5 +709,12 @@ body {
     width: auto;
 }
 
+/* Evita el zoom automático en celulares al tocar un input */
+input, textarea, select {
+    font-size: 16px !important;
+}
+
+
+
 
 
